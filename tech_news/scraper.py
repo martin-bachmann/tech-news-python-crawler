@@ -72,6 +72,8 @@ def scrape_news(html_content):
 # Requisito 5
 def get_tech_news(amount):
     """Seu código deve vir aqui"""
+    result = []
+
     page = fetch("https://blog.betrybe.com")
     links = scrape_updates(page)
 
@@ -84,9 +86,8 @@ def get_tech_news(amount):
     for index in range(0, amount):
         page = fetch(links[index])
         scraped_news = scrape_news(page)
+        result.append(scraped_news)
 
-    result = []
-    result.append(scraped_news)
-    print(result)
     create_news(result)
+
     return result
